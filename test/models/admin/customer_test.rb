@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class CustomerTest < ActiveSupport::TestCase
+class Admin::CustomerTest < ActiveSupport::TestCase
 	def setup
-		@customer = customers(:valid)
+		@customer = admin_customers(:valid)
 	end
 
   test "valid customer" do
