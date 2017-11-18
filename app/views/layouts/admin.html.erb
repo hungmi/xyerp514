@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Admin | 翔裕管理系統</title>
+    <title><%= @nav_title %> | 翔裕管理系統</title>
     <meta name="viewport" content="width=device-width">
     <%= csrf_meta_tags %>
 
@@ -9,7 +9,15 @@
     <%= javascript_include_tag 'admin', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="container">
-    <%= yield %>
+  <body class="container-fluid">
+    <div class="row" id="admin_bg">
+      <div class="col-md-4 col-lg-3 col-xl-2 px-0 sidebar">
+        <%= render "admin/partials/sidebar" %>
+      </div>
+      <div class="col-md-8 offset-md-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pr-0 main_content">
+        <%= render "admin/partials/nav" %>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

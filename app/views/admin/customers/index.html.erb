@@ -1,1 +1,16 @@
-客戶列表
+<table class="table">
+	<thead>
+		<th>名稱</th>
+		<th>地址</th>
+		<th>付款方式</th>
+	</thead>
+	<tbody>
+		<% @customers.each do |customer| %>
+			<tr>
+				<td><%= customer.name %></td>
+				<td><%= customer.address %></td>
+				<td><%= customer.payment_term %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
