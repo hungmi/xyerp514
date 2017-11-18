@@ -1,0 +1,6 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+valid:
+  name: "東台"
+  address: "高雄市路竹區路科三路3號"
+  payment_term: "cash"
