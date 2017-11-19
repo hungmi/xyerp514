@@ -1,0 +1,24 @@
+<table class="table">
+	<thead>
+		<th>圖號</th>
+		<th>名稱</th>
+		<th>規格</th>
+		<th>售價</th>
+		<th>庫存量</th>
+		<th>發包中</th>
+		<th>待發包數量</th>
+	</thead>
+	<tbody>
+		<% @workpieces.each do |workpiece| %>
+			<tr>
+				<td><%= workpiece.picnum %></td>
+				<td><%= workpiece.name %></td>
+				<td><%= workpiece.spec || "實際尺寸SCM21φ28*344" %></td>
+				<td><%= number_with_delimiter(workpiece.price || rand(50..80) * 100) %></td>
+				<td><%= rand(100) %></td>
+				<td><%= link_to rand(100), admin_workpiece_manufacturing_records_path(workpiece_id: workpiece) %></td>
+				<td><%= rand(100) %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

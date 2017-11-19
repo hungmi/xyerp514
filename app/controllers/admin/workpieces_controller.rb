@@ -11,6 +11,6 @@ class Admin::WorkpiecesController < AdminController
 	end
 
 	def set_nav_title
-		@nav_title = "客戶管理"
+		@nav_title = "工件管理"
 	end
 end

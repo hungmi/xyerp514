@@ -37,12 +37,15 @@
 	background: #323232;
 	.list-group .list-group-item {
 		background-color: transparent;
-		color: #ddd;
 		border: 1px solid transparent;
 		border-radius: 99px;
 		padding-left: 30px;
 		width: auto;
 		margin: 3px 10px;
+		color: #ddd;
+		&.disabled {
+			color: #868e96;
+		}
 		&:hover {
 			color: white;
 		}

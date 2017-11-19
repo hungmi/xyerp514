@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 	namespace :admin do
 		resources :customers do
 			resources :workpieces
-		end	
+		end
+		resources :workpieces do
+			resources :manufacturing_records
+		end
+		resources :factories
 	end
 end
