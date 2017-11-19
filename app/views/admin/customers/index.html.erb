@@ -3,6 +3,7 @@
 		<th>名稱</th>
 		<th>地址</th>
 		<th>付款方式</th>
+		<th>查看訂單</th>
 	</thead>
 	<tbody>
 		<% @customers.each do |customer| %>
@@ -10,6 +11,7 @@
 				<td><%= customer.name %></td>
 				<td><%= customer.address %></td>
 				<td><%= customer.payment_term %></td>
+				<td><%= link_to "所有工件", admin_customer_workpieces_path %></td>
 			</tr>
 		<% end %>
 	</tbody>
