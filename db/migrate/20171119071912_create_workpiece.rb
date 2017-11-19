@@ -6,6 +6,7 @@ class CreateWorkpiece < ActiveRecord::Migration[5.1]
       t.decimal :price, precision: 12, scale: 3
       t.string :picnum, null: false
       t.string :spec
+      t.text :note
 
       t.timestamps
     end

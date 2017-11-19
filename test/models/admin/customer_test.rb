@@ -29,4 +29,8 @@ class Admin::CustomerTest < ActiveSupport::TestCase
     # NOTE 因為 workpiece.yml 裡面有一個 valid 的 customer 就是設定成這個 @customer
     assert_equal 1, @customer.workpieces.size
   end
+
+  test "a customer can have one contact" do
+    assert_equal 1, @customer.contacts.size
+  end
 end

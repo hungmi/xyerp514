@@ -1,0 +1,18 @@
+<table class="table">
+	<thead>
+		<th>名稱</th>
+		<th>地址</th>
+		<th>付款方式</th>
+		<th></th>
+	</thead>
+	<tbody>
+		<% @customers.each do |customer| %>
+			<tr>
+				<td><%= customer.name %></td>
+				<td><%= customer.address %></td>
+				<td><%= customer.payment_term %></td>
+				<td><%= link_to "所有工件", admin_customer_workpieces_path(customer_id: customer) %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

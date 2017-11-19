@@ -4,6 +4,7 @@ class CreateCustomers < ActiveRecord::Migration[5.1]
       t.string :name, null: false
       t.string :address, null: false
       t.integer :payment_term, default: 0
+      t.text :note
 
       t.timestamps
     end
