@@ -33,4 +33,16 @@ class Admin::CustomerTest < ActiveSupport::TestCase
   test "a customer can have one contact" do
     assert_equal 1, @customer.contacts.size
   end
+
+  test "customers can't have same name" do
+    @dup_customer = @customer.dup
+    @dup_customer.address = "different address"
+    refute @dup_customer.valid?, "dup_customer is not valid for same name"
+  end
+
+  test "customers can't have same address" do
+    @dup_customer = @customer.dup
+    @dup_customer.name = "different name"
+    refute @dup_customer.valid?, "dup_customer is not valid for same address"
+  end
 end

@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 		resources :workpieces do
 			resources :manufacturing_records
 		end
-		resources :factories
+		resources :factories do
+			resources :procedures
+		end
+		resources :manufacturing_records
 	end
 end

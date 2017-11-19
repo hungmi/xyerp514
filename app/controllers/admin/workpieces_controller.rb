@@ -2,7 +2,11 @@ class Admin::WorkpiecesController < AdminController
 	before_action :find_workpiece, :set_nav_title
 
 	def index
-		@workpieces = Admin::Workpiece.where(customer_id: params[:customer_id]).all
+		@workpieces = if params[:customer_id].present?
+			Admin::Workpiece.where(customer_id: params[:customer_id]).all
+		else
+			Admin::Workpiece.all
+		end
 	end
 
 	private

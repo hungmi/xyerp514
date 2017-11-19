@@ -2,20 +2,25 @@
 	翔裕國際
 </div>
 <div class="list-group">
-	<%= link_to admin_customers_path, class: "list-group-item list-group-item-action #{active_if(admin_customers_path)}" do %>
-		客戶管理
-    <span class="badge badge-primary badge-pill">14</span>
+  <%= link_to admin_workpieces_path, class: "list-group-item list-group-item-action #{active_if(controller: 'workpieces')}" do %>
+		工件總覽
+	<% end %>
+  <%= link_to admin_manufacturing_records_path, class: "list-group-item list-group-item-action #{active_if(admin_manufacturing_records_path)}" do %>
+		追料
+    <span class="badge badge-primary badge-pill">23</span>
 	<% end %>
   <a href="#" class="list-group-item list-group-item-action">
     訂單管理
     <span class="badge badge-primary badge-pill">14</span>
   </a>
-  <a href="#" class="list-group-item list-group-item-action">
-  	追料
-    <span class="badge badge-primary badge-pill">23</span>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action <%= active_if(admin_factories_path) %>">加工廠商資料</a>
-  <a href="#" class="list-group-item list-group-item-action <%= active_if(controller: 'workpieces') %>">工件資料</a>
+  <%= link_to admin_factories_path, class: "list-group-item list-group-item-action #{active_if(admin_factories_path)}" do %>
+		加工廠商
+    <span class="badge badge-primary badge-pill">14</span>
+	<% end %>
+	<%= link_to admin_customers_path, class: "list-group-item list-group-item-action #{active_if(admin_customers_path)}" do %>
+		客戶
+    <span class="badge badge-primary badge-pill">14</span>
+	<% end %>
   <a href="#" class="list-group-item list-group-item-action disabled">應收帳款</a>
   <a href="#" class="list-group-item list-group-item-action disabled">應付帳款</a>
 </div>

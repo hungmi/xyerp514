@@ -10,24 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171119120517) do
+ActiveRecord::Schema.define(version: 20171119133038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "contacts", force: :cascade do |t|
     t.string "name", null: false
-    t.bigint "customer_id"
-    t.bigint "factory_id"
+    t.string "phone", null: false
     t.string "address"
     t.string "tel"
-    t.string "phone"
     t.string "title"
     t.text "note"
+    t.bigint "customer_id"
+    t.bigint "factory_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_contacts_on_customer_id"
     t.index ["factory_id"], name: "index_contacts_on_factory_id"
+    t.index ["name"], name: "index_contacts_on_name", unique: true
+    t.index ["phone"], name: "index_contacts_on_phone", unique: true
   end
 
   create_table "customers", force: :cascade do |t|
@@ -37,6 +39,8 @@ ActiveRecord::Schema.define(version: 20171119120517) do
     t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["address"], name: "index_customers_on_address", unique: true
+    t.index ["name"], name: "index_customers_on_name", unique: true
   end
 
   create_table "factories", force: :cascade do |t|
@@ -47,19 +51,32 @@ ActiveRecord::Schema.define(version: 20171119120517) do
     t.integer "procedures_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["address"], name: "index_factories_on_address", unique: true
+    t.index ["name"], name: "index_factories_on_name", unique: true
+  end
+
+  create_table "manufacturing_records", force: :cascade do |t|
+    t.string "token"
+    t.bigint "workpiece_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["token"], name: "index_manufacturing_records_on_token", unique: true
+    t.index ["workpiece_id"], name: "index_manufacturing_records_on_workpiece_id"
   end
 
   create_table "workpieces", force: :cascade do |t|
     t.string "name", null: false
-    t.bigint "customer_id"
-    t.decimal "price", precision: 12, scale: 3
     t.string "picnum", null: false
+    t.decimal "price", precision: 12, scale: 3
     t.string "spec"
     t.text "note"
+    t.bigint "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_workpieces_on_customer_id"
+    t.index ["picnum"], name: "index_workpieces_on_picnum", unique: true
   end
 
+  add_foreign_key "manufacturing_records", "workpieces"
   add_foreign_key "workpieces", "customers"
 end

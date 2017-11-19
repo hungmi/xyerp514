@@ -1,10 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 valid:
-  name: "陳經理"
+  name: "陳經理1"
+  phone: "0932722123"
 customer_contact:
-  name: "陳經理"
+  name: "陳經理2"
+  phone: "0932722124"
   customer: valid
 factory_contact:
-  name: "陳老闆"
+  name: "陳老闆3"
+  phone: "0932722125"
   factory: valid

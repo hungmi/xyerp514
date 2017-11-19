@@ -2,16 +2,16 @@
 	<thead>
 		<th>名稱</th>
 		<th>地址</th>
-		<th>付款方式</th>
+		<th>加工種類</th>
 		<th></th>
 	</thead>
 	<tbody>
-		<% @customers.each do |customer| %>
+		<% @factories.each do |factory| %>
 			<tr>
-				<td><%= customer.name %></td>
-				<td><%= customer.address %></td>
-				<td><%= customer.payment_term %></td>
-				<td><%= link_to "所有工件", admin_customer_workpieces_path(customer_id: customer) %></td>
+				<td><%= factory.name %></td>
+				<td><%= factory.address %></td>
+				<td><%= factory.skill %></td>
+				<td><%= link_to "發包狀況", admin_factory_procedures_path(factory_id: factory) %></td>
 			</tr>
 		<% end %>
 	</tbody>

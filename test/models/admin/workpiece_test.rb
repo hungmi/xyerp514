@@ -20,4 +20,9 @@ class Admin::WorkpieceTest < ActiveSupport::TestCase
   	refute @workpiece.valid?, "workpiece is not valid without a picnum"
   	assert_not_nil @workpiece.errors[:picnum], "no validation error for workpiece picnum"
   end
+
+  test "workpieces can't have same picnum" do
+    @dup_workpiece = @workpiece.dup
+    refute @dup_workpiece.valid?, "dup_workpiece is not valid for same picnum"
+  end
 end

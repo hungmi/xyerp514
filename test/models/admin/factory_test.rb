@@ -30,4 +30,16 @@ class Admin::FactoryTest < ActiveSupport::TestCase
   test "a factory can have one contact" do
     assert_equal 1, @factory.contacts.size
   end
+
+  test "factories can't have same name" do
+  	@dup_factory = @factory.dup
+  	@dup_factory.address = "different address"
+  	refute @dup_factory.valid?, "dup_factory is not valid for same name"
+  end
+
+  test "factories can't have same address" do
+  	@dup_factory = @factory.dup
+  	@dup_factory.name = "different name"
+  	refute @dup_factory.valid?, "dup_factory is not valid for same address"
+  end
 end

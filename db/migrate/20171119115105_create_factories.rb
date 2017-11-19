@@ -9,5 +9,7 @@ class CreateFactories < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+    add_index :factories, :name, unique: true
+    add_index :factories, :address, unique: true
   end
 end

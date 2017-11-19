@@ -2,21 +2,21 @@
 
 @media only screen and (min-width: 900px) {
 	#sidebar {
-		width: 260px;
-		overflow: auto;
-	}
-	#nav, #right {
-		width: calc(100% - 260px);
-	}
-}
-
-@media only screen and (min-width: 768px) and (max-width: 899px) {
-	#sidebar {
 		width: 200px;
 		overflow: auto;
 	}
 	#nav, #right {
 		width: calc(100% - 200px);
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 899px) {
+	#sidebar {
+		width: 160px;
+		overflow: auto;
+	}
+	#nav, #right {
+		width: calc(100% - 160px);
 	}
 }
 

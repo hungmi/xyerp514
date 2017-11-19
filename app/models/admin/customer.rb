@@ -4,5 +4,5 @@ class Admin::Customer < ApplicationRecord
 	has_many :workpieces
 	has_many :contacts
 	
-	validates :name, :address, presence: true
+	validates :name, :address, presence: true, uniqueness: true
 end
