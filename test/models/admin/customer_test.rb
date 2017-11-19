@@ -24,4 +24,9 @@ class Admin::CustomerTest < ActiveSupport::TestCase
   test "customer should pay in cash by default" do
   	assert @customer.cash?
   end
+
+  test "a customer have many workpieces" do
+    # NOTE 因為 workpiece.yml 裡面有一個 valid 的 customer 就是設定成這個 @customer
+    assert_equal 1, @customer.workpieces.size
+  end
 end

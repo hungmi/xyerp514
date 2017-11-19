@@ -1,11 +1,40 @@
 @import "bootstrap";
 
-#admin_bg {
-	background: #FFA534;
+@media only screen and (min-width: 900px) {
+	#sidebar {
+		width: 260px;
+		overflow: auto;
+	}
+	#nav, #right {
+		width: calc(100% - 260px);
+	}
 }
 
-.sidebar {
-	position: fixed;
+@media only screen and (min-width: 768px) and (max-width: 899px) {
+	#sidebar {
+		width: 200px;
+		overflow: auto;
+	}
+	#nav, #right {
+		width: calc(100% - 200px);
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	#nav {
+		width: 100%;
+		.navbar-collapse {
+			margin-top: 15px;
+		}
+	}
+}
+
+#full_page_wrapper {
+	height: 100vh;
+}
+
+#sidebar {
+	background: #323232;
 	.list-group .list-group-item {
 		background-color: transparent;
 		color: #ddd;
@@ -22,16 +51,21 @@
 			background-color: rgba(255, 255, 255, 0.23);
 		}
 	}
-}
-
-.logo {
-	padding: 34px 12px;
-	font-size: 24px;
-	color: white;
+	.logo {
+		padding: 34px 12px;
+		font-size: 24px;
+		color: white;
+	}
 }
 
 .navbar-brand {
 	color: #FFA534 !important;
+}
+
+#nav {
+	position: fixed;
+	background-color: #f4f3ef;
+	z-index: 3;
 }
 
 #navbar-search-btn {
@@ -40,6 +74,14 @@
 	background: #FFA534;
 }
 
-.main_content {
-	background: white;
+#right {
+	overflow: auto;
+	float: right;
+	background-color: #f4f3ef;
+}
+
+#main_content {
+	z-index: 2;
+	position: relative;
+	top: 56px;
 }
