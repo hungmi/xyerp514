@@ -1,0 +1,12 @@
+.previous_procedure td, .next_procedure td {
+	color: #999;
+}
+.current_procedure td {
+	font-weight: bold;
+}
+
+.bg-danger, .bg-warning {
+	.text-muted {
+		color: #ccc !important;
+	}
+}

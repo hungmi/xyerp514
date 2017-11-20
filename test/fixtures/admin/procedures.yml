@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+valid:
+  factory: valid
+  manufacturing_record: valid
+  # amount: 1
+  # price: 9.99
+  # arrived_at: 2017-11-20 00:14:44
+  # finished_at: 2017-11-20 00:14:44
+  # processing_time: 2017-11-20 00:14:44

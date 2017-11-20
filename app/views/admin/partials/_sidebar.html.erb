@@ -7,7 +7,7 @@
 	<% end %>
   <%= link_to admin_manufacturing_records_path, class: "list-group-item list-group-item-action #{active_if(admin_manufacturing_records_path)}" do %>
 		追料
-    <span class="badge badge-primary badge-pill">23</span>
+    <span class="badge badge-primary badge-pill"><%= @manufacturing_records.size %></span>
 	<% end %>
   <a href="#" class="list-group-item list-group-item-action">
     訂單管理

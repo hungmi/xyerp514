@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171119133038) do
+ActiveRecord::Schema.define(version: 20171119161442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,22 @@ ActiveRecord::Schema.define(version: 20171119133038) do
     t.index ["workpiece_id"], name: "index_manufacturing_records_on_workpiece_id"
   end
 
+  create_table "procedures", force: :cascade do |t|
+    t.bigint "factory_id"
+    t.bigint "manufacturing_record_id"
+    t.string "name"
+    t.integer "amount"
+    t.decimal "price"
+    t.datetime "arrived_at"
+    t.datetime "finished_at"
+    t.datetime "processing_time"
+    t.text "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["factory_id"], name: "index_procedures_on_factory_id"
+    t.index ["manufacturing_record_id"], name: "index_procedures_on_manufacturing_record_id"
+  end
+
   create_table "workpieces", force: :cascade do |t|
     t.string "name", null: false
     t.string "picnum", null: false
@@ -78,5 +94,7 @@ ActiveRecord::Schema.define(version: 20171119133038) do
   end
 
   add_foreign_key "manufacturing_records", "workpieces"
+  add_foreign_key "procedures", "factories"
+  add_foreign_key "procedures", "manufacturing_records"
   add_foreign_key "workpieces", "customers"
 end
