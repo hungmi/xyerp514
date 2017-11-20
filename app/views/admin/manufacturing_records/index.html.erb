@@ -1,61 +1,38 @@
-<div class="card-columns">
-	<% @manufacturing_records.each do |manufacturing_record| %>
-		<div class="manufacturing-record-card">
-			<div class="card <%= render_hint_based_on_arrived_at(manufacturing_record) %> mb-3">
-			  <div class="card-header text-muted">
-			  	<small>從</small> <%= manufacturing_record.previous_procedure.factory.name %> - <%= manufacturing_record.previous_procedure.finished_at.strftime("%m/%d") %> <small>完工</small>
-			  </div>
-			  <div class="card-body">
-			    <h5 class="mb-3 picnum-before-5"><%= manufacturing_record.workpiece.picnum[1..-6] %></h5><h3 class="ml-1 picnum-last-5"><%= manufacturing_record.workpiece.picnum[-5..-1] %></h3>
-			    <h4 class="card-title">
-			    	<%= manufacturing_record.current_procedure.factory.name %> - <%= manufacturing_record.current_procedure.arrived_at.strftime("%m/%d") %> 到料
-			    	<small class="text-muted"><%= how_many_days_at_current_procedure(manufacturing_record) %> 天前</small>
-			    </h4>
-			    <a href="#" class="card-link"><small><i class="fa fa-long-arrow-left"></i> 回上站</small></a>
-			    <a href="#" class="card-link">標為完工 <i class="fa fa-check" aria-hidden="true"></i></a>
-			  </div>
-			  <div class="card-footer text-muted text-right">
-			    <small>往</small> <%= manufacturing_record.next_procedure.factory.name %>
-			  </div>
-			</div>
-		</div>
-		<table class="table mb-3" style="background-color: white; display: none;">
-			<thead>
-				<th>圖號</th>
-				<th>目前位於</th>
-				<th>數量</th>
-				<th>到料日</th>
-				<th>完工日</th>
-				<th></th>
-			</thead>
-			<tbody>
-				<tr>
-					<td colspan="5">
-						<%= manufacturing_record.workpiece.picnum %>
-					</td>
-				</tr>
-				<tr class="previous_procedure">
-					<td><%= manufacturing_record.previous_procedure.factory.name %></td>
-					<td><%= manufacturing_record.previous_procedure.amount || rand(10..50) %></td>
-					<td><%= manufacturing_record.previous_procedure.arrived_at.strftime("%m/%d") if manufacturing_record.previous_procedure.arrived_at.present? %></td>
-					<td><%= manufacturing_record.previous_procedure.finished_at.strftime("%m/%d") if manufacturing_record.previous_procedure.finished_at.present? %></td>
-					<td>已完工</td>
-				</tr>
-				<tr class="current_procedure">
-					<td><%= manufacturing_record.current_procedure.factory.name %></td>
-					<td><%= manufacturing_record.current_procedure.amount || rand(10..50) %></td>
-					<td><%= manufacturing_record.current_procedure.arrived_at.strftime("%m/%d") if manufacturing_record.current_procedure.arrived_at.present? %></td>
-					<td><%= manufacturing_record.current_procedure.finished_at.strftime("%m/%d") if manufacturing_record.current_procedure.finished_at.present? %></td>
-					<td><%= link_to "移站", "#" %></td>
-				</tr>
-				<tr class="next_procedure">
-					<td><%= manufacturing_record.next_procedure.factory.name %></td>
-					<td><%= manufacturing_record.next_procedure.amount %></td>
-					<td><%= manufacturing_record.next_procedure.arrived_at.strftime("%m/%d") if manufacturing_record.next_procedure.arrived_at.present? %></td>
-					<td><%= manufacturing_record.next_procedure.finished_at.strftime("%m/%d") if manufacturing_record.next_procedure.finished_at.present? %></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
-	<% end %>
-</div>
+<table class="table thead-fixed">
+	<thead>
+		<th>圖號</th>
+		<th>發包數量</th>
+		<!-- <th>從</th>
+		<th></th> -->
+		<th>目前位於</th>
+		<th>本站 / <small>總累積天數</small></th>
+		<th></th>
+		<th></th>
+	</thead>
+	<tbody>
+		<% @manufacturing_records.each do |manu_record| %>
+			<tr>
+				<td>
+					<%= link_to readable_picnum(manu_record.workpiece.picnum), admin_workpiece_path(manu_record.workpiece) %>
+				</td>
+				<td><%= manu_record.current_procedure.amount || rand(10..50) %></td>
+				<!-- <td class="text-muted"><small><%#= manu_record.previous_procedure.factory.name_and_skill %></small></td>
+				<td class="text-muted"><%#= I18n.l(manu_record.previous_procedure.arrived_at, format: "%b%d日(%a)") %></td> -->
+				<td><%= manu_record.current_procedure.factory.name_and_skill %><small class="text-muted"> <i class="fi-arrow-right"></i> <%= manu_record.next_procedure.factory.name_and_skill %></small></td>
+				<td><strong><%= (Date.current - manu_record.current_procedure.arrived_at.to_date).to_i %></strong> / <small><%= (Date.current - manu_record.first_procedure.arrived_at.to_date).to_i %></small></td>
+				<td>
+					<%= link_to "#" do %>
+						提醒
+						<i class="fi-bookmark"></i>
+					<% end %>
+				</td>
+				<td>
+					<%= link_to "#" do %>
+						編輯
+						<i class="fi-page-edit"></i>
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

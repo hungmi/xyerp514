@@ -4,4 +4,8 @@ class Admin::Factory < ApplicationRecord
 
 	validates :skill, presence: true
 	validates :name, :address, presence: true, uniqueness: true
+
+	def name_and_skill
+		"#{self.name} - #{self.skill}"
+	end
 end

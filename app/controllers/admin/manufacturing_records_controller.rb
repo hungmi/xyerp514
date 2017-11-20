@@ -2,7 +2,7 @@ class Admin::ManufacturingRecordsController < AdminController
 	before_action :find_manufacturing_record, :set_nav_title
 
 	def index
-		@manufacturing_records = Admin::ManufacturingRecord.includes(:procedures, :workpiece, procedures: :factory).all.limit(10)
+		@manufacturing_records = Admin::ManufacturingRecord.includes(:procedures, :workpiece, procedures: :factory).all
 	end
 
 	private

@@ -14,5 +14,12 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require jquery.floatThead.min
 //= require turbolinks
 //= require_tree .
+
+$(document).on("turbolinks:load", function() {
+	// 在 table.table 上加上 thead-fixed，即會自動將 header 固定～
+	var $table = $('table.thead-fixed');
+	$table.floatThead();
+})

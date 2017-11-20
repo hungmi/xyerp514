@@ -10,3 +10,10 @@
 		color: #ccc !important;
 	}
 }
+
+.thead-fixed {
+	thead {
+		background-color: #f4f3ef;
+		z-index: 3;
+	}
+}

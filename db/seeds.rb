@@ -18,7 +18,7 @@ for i in 1..10 do
 
 		manufacturing_record = workpiece.manufacturing_records.create!
 
-		first_procedure_start_at = rand(1..150).days.ago
+		first_procedure_start_at = rand(1..300).days.ago
 		finished_at = first_procedure_start_at + rand(1..30).days
 		manufacturing_record.procedures.create!({
 			factory: factory,

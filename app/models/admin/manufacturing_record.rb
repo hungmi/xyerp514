@@ -6,6 +6,10 @@ class Admin::ManufacturingRecord < ApplicationRecord
   belongs_to :workpiece
   has_many :procedures, dependent: :destroy
 
+  def first_procedure
+  	self.procedures.where("arrived_at IS NOT NULL").order(:arrived_at).first
+  end
+
   def previous_procedure
   	self.procedures.where("finished_at IS NOT NULL").order(:finished_at).last
   end
